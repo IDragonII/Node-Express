@@ -3,7 +3,7 @@ import mysql from "mysql2/promise";
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "", // Coloca tu contraseña de MySQL
+  password: "",
   database: "CrudNodejs",
   waitForConnections: true,
   connectionLimit: 10,

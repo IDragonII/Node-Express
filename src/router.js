@@ -27,7 +27,7 @@ router.post("/estudiantes", async (req, res) => {
 
   try {
     await agregarEstudiante({ nombre_alumno, email_alumno, curso_alumno });
-    res.redirect("/");
+    res.redirect("/Crud-Completo-con-NodeJS-Express-y-MySQL");
   } catch (error) {
     const { status, message } = error;
     res.status(status || 500).json({ error: message });

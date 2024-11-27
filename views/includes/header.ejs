@@ -1,17 +1,26 @@
 <header class="header">
   <a href="./" class="logo">
-    <img src="public/imgs/logo.png" alt="Logo" />
+    <img src="public/imgs/logo.jpg" alt="Logo" />
   </a>
   <input class="menu-btn" type="checkbox" id="menu-btn" />
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
-    <li>
-      <a class="menu-item" href="/"> Inicio </a>
-    </li>
-    <li>
-      <a class="menu-item" href="/Crud-Completo-con-NodeJS-Express-y-MySQL">
-        Crud
-      </a>
-    </li>
+    <div class="" id="">
+
+      <div class="custom_menu-btn">
+        <button onclick="openNav()">
+          <span class="s-1"> </span>
+          <span class="s-2"> </span>
+          <span class="s-3"> </span>
+        </button>
+        <div id="myNav" class="overlay">
+          <div class="overlay-content">
+            <a href="/">Inicio</a>
+            <a href="/Crud-Completo-con-NodeJS-Express-y-MySQL">Gestion</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </ul>
 </header>

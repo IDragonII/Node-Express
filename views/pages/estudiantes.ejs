@@ -1,55 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%- include('../includes/head') %>
-  </head>
-  <body>
-    <%- include('../includes/header') %>
+
+<head>
+  <%- include('../includes/head') %>
+</head>
+
+<body>
+  <%- include('../includes/header') %>
 
     <div class="container" style="margin-top: 80px !important">
       <div class="row justify-content-md-center mb-5">
         <div class="col-md-12 mt-5">
           <h2 class="text-center title">
-            Crud Completo con NodeJS, Express y MySQL
+            Gestor Hecho con NODE Y EXPRESS
             <hr />
           </h2>
         </div>
       </div>
 
       <div class="row justify-content-md-center mb-5">
-        <div class="col-md-4 mb-5">
-          <h3 class="text-center">
-            Registrar Estudiante
-            <hr />
-          </h3>
-          <form action="/estudiantes" method="POST">
-            <div class="mb-3">
-              <label for="nombre_alumno" class="form-label"> Alumno </label>
-              <input type="text" name="nombre_alumno" class="form-control" />
-            </div>
-            <div class="mb-3">
-              <label for="email_alumno" class="form-label"> Email </label>
-              <input type="email" name="email_alumno" class="form-control" />
-            </div>
-            <div class="mb-3">
-              <label for="curso_alumno">Curso</label>
-              <select name="curso_alumno" class="form-select">
-                <option value="">Seleccionar el curso</option>
-                <option value="Python">Python</option>
-                <option value="NodeJS">NodeJS</option>
-                <option value="PHP">PHP</option>
-                <option value="JavaScript">JavaScript</option>
-              </select>
-            </div>
-
-            <div class="d-grid gap-2 col-12 mx-auto mt-4 mb-4">
-              <button class="btn btn-primary" type="submit">
-                Registrar Estudiante
-              </button>
-            </div>
-          </form>
-        </div>
-
         <div class="col-md-8 py-3 custom_table">
           <h3 class="text-center">
             Lista de Estudiantes
@@ -68,51 +37,317 @@
                 </tr>
               </thead>
               <tbody>
-                <% let contador = 1; %>
-                <!---->
-                <% estudiantes.forEach(function(estudiante) { %>
-                <tr>
-                  <th scope="row"><%= contador %></th>
-                  <td><%= estudiante.nombre_alumno %></td>
-                  <td><%= estudiante.email_alumno %></td>
-                  <td><%= estudiante.curso_alumno %></td>
-                  <td>
-                    <span style="display: flex; justify-content: space-between">
-                      <!-- Corregir el uso de la variable en la URL del enlace -->
-                      <a
-                        class="btn btn-info info_especial"
-                        href="/detalles/<%= estudiante.id_estudiante %>"
-                        title="Ver Detalles del Estudiante">
-                        <i class="bi bi-person-bounding-box"></i>
-                      </a>
-                      <a
-                        class="btn btn-success success_especial"
-                        title="Editar datos del Estudiante"
-                        href="/formulario-actualizar-estudiante/<%= estudiante.id_estudiante %>">
-                        <i class="bi bi-pencil-square"></i>
-                      </a>
-                      <form
-                        action="/borrar-estudiante/<%= estudiante.id_estudiante %>"
-                        method="POST">
-                        <input type="hidden" name="_method" value="DELETE" />
-                        <button type="submit" class="btn btn-danger">
-                          <i class="bi bi-trash"></i>
-                          Eliminar
-                        </button>
-                      </form>
-                    </span>
-                  </td>
-                </tr>
-                <% contador++; %>
-                <!---->
-                <% }); %>
+                <% let contador=1; %>
+                  <!---->
+                  <% estudiantes.forEach(function(estudiante) { %>
+                    <tr>
+                      <th scope="row">
+                        <%= contador %>
+                      </th>
+                      <td>
+                        <%= estudiante.nombre_alumno %>
+                      </td>
+                      <td>
+                        <%= estudiante.email_alumno %>
+                      </td>
+                      <td>
+                        <%= estudiante.curso_alumno %>
+                      </td>
+                      <td>
+                        <span style="display: flex; justify-content: space-between">
+                          <!-- Corregir el uso de la variable en la URL del enlace -->
+                          <a class="btn btn-info info_especial" href="/detalles/<%= estudiante.id_estudiante %>"
+                            title="Ver Detalles del Estudiante">
+                            <i class="bi bi-person-bounding-box"></i>
+                          </a>
+                          <a class="btn btn-success success_especial" title="Editar datos del Estudiante"
+                            href="/formulario-actualizar-estudiante/<%= estudiante.id_estudiante %>">
+                            <i class="bi bi-pencil-square"></i>
+                          </a>
+                          <form action="/borrar-estudiante/<%= estudiante.id_estudiante %>" method="POST">
+                            <input type="hidden" name="_method" value="DELETE" />
+                            <button type="submit" class="btn btn-danger">
+                              <i class="bi bi-trash"></i>
+                              Eliminar
+                            </button>
+                          </form>
+                        </span>
+                      </td>
+                    </tr>
+                    <% contador++; %>
+                      <!---->
+                      <% }); %>
               </tbody>
             </table>
           </div>
         </div>
+        <div class="formbold-main-wrapper">
+          <!-- Author: FormBold Team -->
+          <!-- Learn More: https://formbold.com -->
+          <div class="w-full">
+            <div class="formbold-form-wrapper">
+              <div class="formbold-form-header">
+                <h3>Registrar estudiante</h3>
+                <button onclick="chatboxToogleHandler()">
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="white">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.474874 0.474874C1.10804 -0.158291 2.1346 -0.158291 2.76777 0.474874L16.5251 14.2322C17.1583 14.8654 17.1583 15.892 16.5251 16.5251C15.892 17.1583 14.8654 17.1583 14.2322 16.5251L0.474874 2.76777C-0.158291 2.1346 -0.158291 1.10804 0.474874 0.474874Z" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.474874 16.5251C-0.158291 15.892 -0.158291 14.8654 0.474874 14.2322L14.2322 0.474874C14.8654 -0.158292 15.892 -0.158291 16.5251 0.474874C17.1583 1.10804 17.1583 2.1346 16.5251 2.76777L2.76777 16.5251C2.1346 17.1583 1.10804 17.1583 0.474874 16.5251Z" />
+                  </svg>
+                </button>
+              </div>
+              <form action="/estudiantes" method="POST" class="formbold-chatbox-form">
+                <div class="formbold-mb-5">
+                  <label for="nombre_alumno" class="formbold-form-label"> Alumno </label>
+                  <input type="text" name="nombre_alumno" id="nombre_alumno" placeholder="Alumno"
+                    class="formbold-form-input" />
+                </div>
+
+                <div class="formbold-mb-5">
+                  <label for="email_alumno" class="formbold-form-label"> Email</label>
+                  <input type="email" name="email_alumno" id="email_alumno" placeholder="example@domain.com"
+                    class="formbold-form-input" />
+                </div>
+
+                <div class="formbold-mb-5">
+                  <div class="mb-3">
+                    <label for="curso_alumno">Curso</label>
+                    <select name="curso_alumno" class="form-select">
+                      <option value="">Seleccionar el curso</option>
+                      <option value="Python">Python</option>
+                      <option value="NodeJS">NodeJS</option>
+                      <option value="PHP">PHP</option>
+                      <option value="JavaScript">JavaScript</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <button class="formbold-btn w-full">Submit</button>
+                </div>
+              </form>
+            </div>
+            <div class="formbold-action-buttons">
+              <button class="formbold-action-btn" onclick="chatboxToogleHandler()">
+                <span class="formbold-cross-icon">
+                  <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.474874 0.474874C1.10804 -0.158291 2.1346 -0.158291 2.76777 0.474874L16.5251 14.2322C17.1583 14.8654 17.1583 15.892 16.5251 16.5251C15.892 17.1583 14.8654 17.1583 14.2322 16.5251L0.474874 2.76777C-0.158291 2.1346 -0.158291 1.10804 0.474874 0.474874Z"
+                      fill="white" />
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                      d="M0.474874 16.5251C-0.158291 15.892 -0.158291 14.8654 0.474874 14.2322L14.2322 0.474874C14.8654 -0.158292 15.892 -0.158291 16.5251 0.474874C17.1583 1.10804 17.1583 2.1346 16.5251 2.76777L2.76777 16.5251C2.1346 17.1583 1.10804 17.1583 0.474874 16.5251Z"
+                      fill="white" />
+                  </svg>
+                </span>
+                <span class="formbold-chat-icon">
+                  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M19.8333 14.0002V3.50016C19.8333 3.19074 19.7103 2.894 19.4915 2.6752C19.2728 2.45641 18.976 2.3335 18.6666 2.3335H3.49992C3.1905 2.3335 2.89375 2.45641 2.67496 2.6752C2.45617 2.894 2.33325 3.19074 2.33325 3.50016V19.8335L6.99992 15.1668H18.6666C18.976 15.1668 19.2728 15.0439 19.4915 14.8251C19.7103 14.6063 19.8333 14.3096 19.8333 14.0002ZM24.4999 7.00016H22.1666V17.5002H6.99992V19.8335C6.99992 20.1429 7.12284 20.4397 7.34163 20.6585C7.56042 20.8772 7.85717 21.0002 8.16659 21.0002H20.9999L25.6666 25.6668V8.16683C25.6666 7.85741 25.5437 7.56066 25.3249 7.34187C25.1061 7.12308 24.8093 7.00016 24.4999 7.00016Z"
+                      fill="white" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+      }
+
+      .formbold-mb-5 {
+        margin-bottom: 20px;
+      }
+
+      .formbold-pt-3 {
+        padding-top: 12px;
+      }
+
+      .formbold-form-label {
+        display: block;
+        font-weight: 500;
+        font-size: 16px;
+        color: #07074d;
+        margin-bottom: 12px;
+      }
+
+      .formbold-form-label-2 {
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .formbold-form-input {
+        width: 100%;
+        padding: 12px 24px;
+        border-radius: 6px;
+        border: 1px solid #e0e0e0;
+        background: white;
+        font-weight: 500;
+        font-size: 16px;
+        color: #6b7280;
+        outline: none;
+        resize: none;
+      }
+
+      .formbold-form-input:focus {
+        border-color: #6a64f1;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .formbold-btn {
+        text-align: center;
+        font-size: 16px;
+        border-radius: 6px;
+        padding: 14px 32px;
+        border: none;
+        font-weight: 600;
+        background-color: #6a64f1;
+        color: white;
+        cursor: pointer;
+      }
+
+      .formbold-btn:hover {
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .formbold--mx-3 {
+        margin-left: -12px;
+        margin-right: -12px;
+      }
+
+      .formbold-px-3 {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex-wrap {
+        flex-wrap: wrap;
+      }
+
+      .w-full {
+        width: 100%;
+      }
+
+      .formbold-form-header {
+        background: #6a64f1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 36px;
+        border-radius: 8px 8px 0px 0px;
+      }
+
+      .formbold-form-header h3 {
+        font-weight: 700;
+        font-size: 20px;
+        color: white;
+      }
+
+      .formbold-form-header button {
+        color: white;
+        background: transparent;
+        border: none;
+      }
+
+      .formbold-main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 48px;
+        position: relative;
+      }
+
+      .formbold-form-wrapper {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-0%, -50%);
+        z-index: 1000;
+        margin: 0 auto;
+        max-width: 550px;
+        width: 100%;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        display: none;
+      }
+
+      .formbold-form-wrapper.active {
+        display: block;
+      }
+
+      .formbold-action-buttons {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 999;
+      }
+
+      .formbold-action-btn {
+        width: 70px;
+        height: 70px;
+        background: #6a64f1;
+        color: white;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .formbold-action-btn:hover {
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+      }
+
+
+      .formbold-chatbox-form {
+        padding: 32px 36px;
+      }
+
+      .formbold-action-btn .formbold-cross-icon {
+        display: none;
+      }
+
+      .formbold-action-btn.active .formbold-cross-icon {
+        display: block;
+      }
+
+      .formbold-action-btn.active .formbold-chat-icon {
+        display: none;
+      }
+
+      @media (min-width: 540px) {
+        .sm\:w-half {
+          width: 50%;
+        }
+      }
+    </style>
+    <script>
+      const formWrapper = document.querySelector(".formbold-form-wrapper");
+      const formActionButton = document.querySelector(".formbold-action-btn");
+      function chatboxToogleHandler() {
+        formWrapper.classList.toggle("active");
+        formActionButton.classList.toggle("active");
+      }
+    </script>
 
     <%- include('../includes/scripts') %>
-  </body>
+</body>
+
 </html>

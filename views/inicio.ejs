@@ -1,38 +1,68 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <%- include('includes/head') %>
-  </head>
-  <body>
-    <%- include('includes/header') %>
 
-    <main class="content-wrapper mt-5" style="margin-top: 80px !important">
-      <div class="container" style="width: 95% !important">
-        <div class="row justify-content-md-center mb-5">
-          <div class="col-md-12 mt-5">
-            <h2 class="text-center title">
-              Crud Completo con NodeJS, Express y MySQL
-              <hr />
-            </h2>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crud Completo con NodeJS, Express y MySQL</title>
+  <link rel="shortcut icon" href="public/imgs/logo.jpg" type="image/x-icon" />
 
-          <div class="col-md-6 mt-5">
-            <img
-              class="img-fluid"
-              style="max-width: 550px"
-              src="../public/imgs/nodejs.png"
-              alt="WeB Developer - urian V" />
-          </div>
-          <div class="col-md-6 mt-5">
-            <img
-              src="../public/imgs/goku.gif"
-              class="img-fluid rounded"
-              alt="Goku" />
+  <!--fuente-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="public/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="public/css/menu.css" />
+  <link rel="stylesheet" href="public/css/home.css" />
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="public/css/bootstrap.css" />
+  <!-- font awesome style -->
+  <link href="public/css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="public/css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="public/css/responsive.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header class="header">
+    <a href="./" class="logo">
+      <img src="public/imgs/logo.jpg" alt="Logo" />
+    </a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+
+  </header>
+
+  <section class="slider_section position-relative">
+    <div class="slider_bg_box">
+      <img src="public/imgs/est.jpg" alt="">
+    </div>
+    <div class="slider_bg"></div>
+    <div class="container">
+      <div class="col-md-9 col-lg-8">
+        <div class="detail-box">
+          <h1>
+            AYUDANTE DE
+            <br> GESTION
+          </h1>
+          <p>
+            Binvenido a un programa donde podras gestionar los cursos de tus alumnos y quienes lo llevaran
+          </p>
+          <div>
+            <a href="/Crud-Completo-con-NodeJS-Express-y-MySQL" class="slider-link">
+              Gestionar
+            </a>
           </div>
         </div>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <%- include('includes/scripts') %>
-  </body>
+  <%- include('includes/scripts') %>
+</body>
+
 </html>
